@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>smoothScroll</title>
+    <style>
+        html{
+           scroll-behavior: smooth;
+        }
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+        div{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        div:nth-child(odd){
+            background: #ccc;
+        }
+        div:before{
+            content: attr(data-text);
+            color: #262626;
+            font-size: 2em;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+        ul{
+            width: 100%;
+            background: #000;
+            height: 50px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            position: fixed;
+            top: 0;
+            letter-spacing: 0;
+            justify-content: space-around;
+        }
+        ul li{
+            list-style: none;
+        }
+        ul li a{
+            color: #fff;
+            line-height: 50px;
+            box-sizing: border-box;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="#sec1">Section 1</a></li>
+        <li><a href="#sec2">Section 2</a></li>
+        <li><a href="#sec3">Section 3</a></li>
+        <li><a href="#sec4">Section 4</a></li>
+        <li><a href="#sec5">Section 5</a></li>
+        <li><a href="#sec6">Section 6</a></li>
+    </ul>
+    <div id="sec1" data-text="Section 1"></div> 
+    <div id="sec2" data-text="Section 2"></div>
+    <div id="sec3" data-text="Section 3"></div>
+    <div id="sec4" data-text="Section 4"></div>
+    <div id="sec5" data-text="Section 5"></div>
+    <div id="sec6" data-text="Section 6"></div>
+    
+       
+    
+    
+	
+
+</body>
+</html>

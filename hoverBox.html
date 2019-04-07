@@ -1,0 +1,160 @@
+<!doctype html>
+<html>
+    <head>
+        <title>parallaxEffect</title>
+        <style>
+            body
+            {
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                font-family: 'Poppins', sans-serif;
+            }
+            .hoverbox-container
+            {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+            }
+            .hoverbox-container .hoverbox-box:before
+            {
+                content: '';
+                width: 50%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background: rgba(255,255,255,.2);
+                z-index: 2;
+            }
+            .hoverbox-container .hoverbox-box
+            {
+                position: relative;
+                width: 250px;
+                padding: 40px;
+                background: #fff;
+                box-shadow: 0 5px 15px rgba(0,0,0,.1);
+                border-radius: 4px;
+                margin: 20px;
+                box-sizing: border-box;
+                overflow: hidden;
+                text-align: center;
+                
+            }
+            .hoverbox-container .hoverbox-box .hoverbox-icon
+            {
+                position: relative;
+                width: 80px;
+                height: 80px;
+                color: #fff;
+                background: #000;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0 auto;
+                border-radius: 50%;
+                font-size: 40px;
+                font-weight: 700;
+                transition: 1s;
+            }
+            .hoverbox-container .hoverbox-box:nth-child(1) .hoverbox-icon
+            {
+                box-shadow: 0 0 0 0 #e91e63;
+                background: #e91e63;
+                
+            }
+            .hoverbox-container .hoverbox-box:nth-child(1):hover .hoverbox-icon
+            {
+                box-shadow: 0 0 0 400px #e91e63;   
+            }
+            .hoverbox-container .hoverbox-box:nth-child(2) .hoverbox-icon
+            {
+                box-shadow: 0 0 0 0 #23e629;
+                background: #23e629;
+                
+            }
+            .hoverbox-container .hoverbox-box:nth-child(2):hover .hoverbox-icon
+            {
+                box-shadow: 0 0 0 400px #23e629;
+                
+            }
+            .hoverbox-container .hoverbox-box:nth-child(3) .hoverbox-icon
+            {
+                box-shadow: 0 0 0 0 #2196f3;
+                background: #2196f3;
+                
+            }
+            .hoverbox-container .hoverbox-box:nth-child(3):hover .hoverbox-icon
+            {
+                box-shadow: 0 0 0 400px #2196f3;
+                
+            }
+            .hoverbox-container .hoverbox-box .hoverbox-content
+            {
+                position: relative;
+                z-index: 1;
+                transition: 0.5s;
+            }
+            .hoverbox-container .hoverbox-box:hover .hoverbox-content
+            {
+                color: #fff;   
+            }
+            .hoverbox-container .hoverbox-box:hover .hoverbox-content h3
+            {
+                padding: 0;
+            }
+            
+            .hoverbox-container .hoverbox-box .hoverbox-content a
+            {
+                
+                display: inline-block;
+                padding: 10px 20px;
+                background: #fff;
+                border-radius: 4px;
+                text-decoration: none;
+                color: #000;
+                font-weight: 500;
+                margin-top: 20px;
+                box-shadow: 0 2px 5px rgba(0,0,0,.2); 
+            }
+        </style>
+    </head>
+    <body>
+            
+        <div class="hoverbox-container">
+            <div class="hoverbox-box">
+                <div class="hoverbox-icon">01</div>
+                <div class="hoverbox-content">
+                    <h3>Service Name</h3>
+                    <p>Lorem ipsum dolor sit amet,
+                        consectetur adipisicing elit,
+                        sed do eiusmod tempor show me the moneyt</p>
+                    <a href="#">Read More</a>
+                </div>
+            </div>
+            <div class="hoverbox-box">
+                <div class="hoverbox-icon">02</div>
+                <div class="hoverbox-content">
+                    <h3>Service Name</h3>
+                    <p>Lorem ipsum dolor sit amet,
+                        consectetur adipisicing elit,
+                        sed do eiusmod tempor show me the moneyt</p>
+                    <a href="#">Read More</a>
+                </div>
+            </div>
+            <div class="hoverbox-box">
+                <div class="hoverbox-icon">03</div>
+                <div class="hoverbox-content">
+                    <h3>Service Name</h3>
+                    <p>Lorem ipsum dolor sit amet,
+                        consectetur adipisicing elit,
+                        sed do eiusmod tempor show me the moneyt</p>
+                    <a href="#">Read More</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
