@@ -1,0 +1,78 @@
+<!Doctype>
+<html>
+    <title>prettyUI</title>
+    <head>
+        <style>
+            body{
+                font-family: 'Poppins', sans-serif;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                background: #060c21;
+            }
+            .neon-box{
+                position: relative;
+                width: 300px;
+                height: 300px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: #060c21;
+                margin: 10px;  
+            }
+            .neon-box:before{
+                content: '';
+                position: absolute;
+                top: -2px;
+                left: -2px;
+                right: -2px;
+                bottom: -2px;
+                background: #fff;
+                z-index: -1;
+            }
+            .neon-box:after{
+                content: '';
+                position: absolute;
+                top: -2px;
+                left: -2px;
+                right: -2px;
+                bottom: -2px;
+                background: #fff;
+                z-index: -2;
+                filter: blur(40px);
+            }
+            .neon-box:before,
+            .neon-box:after{
+                background: linear-gradient(235deg,#89ff00,#060c21,#00bcd4);
+            }
+            .content {
+                padding: 20px;
+                box-sizing: border-box;
+                color: #fff;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="neon-box">
+            <div class="content">
+                <h1>Glowing</h1>
+                <p>
+                동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세.
+                </p>
+            </div>
+        </div>
+        
+        <div class="neon-box">
+            <div class="content">
+                <h1>Glowing</h1>
+                <p>
+                동해물과 백두산이 마르고 닳도록 하느님이 보우하사 우리나라 만세 무궁화 삼천리 화려강산 대한사람 대한으로 길이 보전하세
+                </p>
+            </div>
+        </div>
+        
+    </body>
+</html>
