@@ -1,0 +1,139 @@
+<!doctype html>
+<html>
+    <head>
+        <title>parallaxEffect</title>
+        <style>
+            :root{
+                --toggle-img-width : 250px;
+                --toggle-img-height : 350px;
+                
+            }
+            body{
+                font-family: 'Poppins', sans-serif;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+                background: #000;
+            }
+            .toggle-card{
+                position: relative;
+                width: var(--toggle-img-width);
+                height: var(--toggle-img-height);
+                background: #262626;
+                overflow: hidden;
+                margin: 10px;
+            }
+            .toggle-card input, .toggle-card-btn{
+                position: absolute;
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+                outline: none;
+                z-index: 10;
+            }
+            .toggle-card input{
+                opacity: 0;
+            }
+            .toggle-card-imgBx img{
+                width: var(--toggle-img-width);
+                height: var(--toggle-img-height);
+            }
+            .toggle-card-btn{
+                pointer-events: none;
+                border-radius: 50%;
+                background: #fff;
+                transition: 0.5s;
+                text-align: center;
+                line-height: 42px;
+                font-size: 36px;
+            }
+            .toggle-card .toggle-card-input1:checked ~ .toggle-card-btn {
+                box-shadow: 0 0 0 500px #9c27b0;
+                box-shadow
+                transform: rotate(225deg)
+            }
+            .toggle-card .toggle-card-input2:checked ~ .toggle-card-btn {
+                box-shadow: 0 0 0 500px #5117b0;
+                box-shadow
+                transform: rotate(225deg)
+            }
+            .toggle-card .toggle-card-input3:checked ~ .toggle-card-btn {
+                box-shadow: 0 0 0 500px #6ca8cc;
+                box-shadow
+                transform: rotate(225deg)
+            }
+            .toggle-card-imgBx, .toggle-card-details{
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+            .toggle-card-details{
+                padding: 20px;
+                box-sizing: border-box;
+                z-index: 11;
+                pointer-events: none;
+                transition: 0.5s;
+                opacity: 0;
+            }
+            .toggle-card input:checked ~ .toggle-card-details {
+                opacity: 1;
+                transition-delay: 0.5s;
+            }
+            .toggle-card-details h2{
+                margin-bottom: 5px;
+                color: #fff;
+                
+            }
+            .toggle-card-details p{
+                margin: 0;
+                padding: 0;
+                color: #fff;
+                
+            }
+        </style>
+    </head>
+    <body>
+        <div class="toggle-card">
+            <input class="toggle-card-input1" type="checkbox" name="">
+            <div class="toggle-card-btn">+</div>
+            <div class="toggle-card-imgBx">
+                <img src="/img/card3.jpg">
+            </div>
+            <div class="toggle-card-details">
+                <h2>Someone Famous</h2>
+                <p>Lorem ipsum show me the money. aasd a as asda sd asda sda sdasdas asd asd asd asd asd</p>
+            </div>
+        </div>
+        
+        <div class="toggle-card">
+            <input class="toggle-card-input2" type="checkbox" name="">
+            <div class="toggle-card-btn">+</div>
+            <div class="toggle-card-imgBx">
+                <img src="/img/card5.jpg">
+            </div>
+            <div class="toggle-card-details">
+                <h2>Someone Famous</h2>
+                <p>Lorem ipsum show me the money. aasd a as asda sd asda sda sdasdas asd asd asd asd asd</p>
+            </div>
+        </div>
+        
+        <div class="toggle-card">
+            <input class="toggle-card-input3" type="checkbox" name="">
+            <div class="toggle-card-btn">+</div>
+            <div class="toggle-card-imgBx">
+                <img src="/img/card4.jpg">
+            </div>
+            <div class="toggle-card-details">
+                <h2>Someone Famous</h2>
+                <p>Lorem ipsum show me the money. aasd a as asda sd asda sda sdasdas asd asd asd asd asd</p>
+            </div>
+        </div>
+        
+    </body>
+</html>

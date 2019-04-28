@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+    <head>
+        <title></title>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+        <style>
+            body{
+                margin: 0;
+                padding: 0;
+                background: #262626;
+                font-family: verdana;
+            }
+            .center{
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+            .container{
+                position: relative;
+                width: 300px;
+                height: 400px;
+                background: #fff;
+                overflow: hidden;
+            }
+            .container:before{
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 170%;
+                width: 100%;
+                height: 100%;
+                background: rgba(255,255,255,.2);
+                z-index: 1;
+                transform: skewX(45deg);
+                transition: .8s;
+            }
+            .container:hover:before{
+                transition-delay: 1.1s;
+                left: -170%;
+            }
+            .container img{
+                width: 100%;
+                filter: grayscale(100%);
+                transition: 2s;
+            }
+            .container:hover img{
+                filter: grayscale(0%);
+                transform: scale(1.2);
+            }
+            .container h2{
+                position: absolute;
+                border: 0;
+                margin: 0;
+                bottom: 0;
+                font-size: 18px;
+                text-align: center;
+                padding: 10px 0;
+                width: 100%;
+                background: #fff;
+                color: #262626;
+                transform-origin: bottom;
+                transition: .5s;
+                transform: perspective(500px) rotateX(90deg);
+            }
+            .container:hover h2{
+                transform: perspective(500px) rotateX(0deg);
+            }
+            .container ul{
+                margin: 0;
+                padding: 0;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            .container ul li{
+                list-style: none;
+                background: #fff;
+                width: 40px;
+                height: 40px;
+                text-align: center;
+                line-height: 40px;
+                transform-origin: left;
+                transition: .5s;
+                border-bottom: 1px solid rgba(0,0,0,.1);
+                transform: perspective(1000px) rotateY(90deg);
+            }
+            .container ul li .fa{
+                color: #262626;
+            }
+            .container:hover ul li{
+                transform: perspective(1000px) rotateY(0deg);
+            }
+            .container:hover ul li:nth-child(1){
+                transition-delay: .5s;
+            }
+            .container:hover ul li:nth-child(2){
+                transition-delay: .8s;
+            }
+            .container:hover ul li:nth-child(3){
+                transition-delay: 1.1s;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div class="center">
+            <div class="container">
+                <img src="/img/card2.jpg" alt="">
+                <h2>Someone Famous</h2>
+                <ul>
+                    <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        
+    </body>
+</html>

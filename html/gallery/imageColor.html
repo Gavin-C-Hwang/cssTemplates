@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+    <head>
+    <title>effectBtn</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        section{
+            height: calc(100vh - 50px);
+            background: url(/img/bg7.jpg);
+        }
+        ul{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 50px;
+            display: flex;
+        }
+        ul li{
+            position: relative;
+            list-style: none;
+            width: 20%;
+            height: 100%;
+            mix-blend-mode: hue;
+            
+        }
+        ul:hover li{
+            opacity: 0;
+        }
+        ul li:hover{
+            opacity: 1;
+        }
+        ul li:nth-child(1){
+            background: #ff5500;
+        }
+         ul li:nth-child(2){
+            background: #5500ff;
+        }
+         ul li:nth-child(3){
+            background: #00b3b3;
+        }
+         ul li:nth-child(4){
+            background: #44cc00;
+        }
+         ul li:nth-child(5){
+            background: #e645a0;
+        }
+        
+        ul li:hover:nth-child(1){
+            box-shadow: 0 0 0 1500px #ff5500;
+        }
+         ul li:hover:nth-child(2){
+            box-shadow: 0 0 0 1500px  #5500ff;
+        }
+         ul li:hover:nth-child(3){
+            box-shadow: 0 0 0 1500px  #00b3b3;
+        }
+         ul li:hover:nth-child(4){
+            box-shadow: 0 0 0 1500px  #44cc00;
+        }
+         ul li:hover:nth-child(5){
+            box-shadow: 0 0 0 1500px  #e645a0;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+       <ul>
+           <li></li>
+           <li></li>
+           <li></li>
+           <li></li>
+           <li></li>
+           
+       </ul> 
+    </section>
+</body></html>

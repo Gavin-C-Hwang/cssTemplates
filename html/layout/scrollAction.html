@@ -1,0 +1,420 @@
+<!doctype html>
+<html>
+
+<head>
+    <style>
+        body {
+            height: 100vh;
+            margin: 0;
+            color: white;
+            font-family: "Montserrat";
+        }
+
+        section {
+            height: 100vh;
+        }
+
+        section.intro {
+            background: #04323d;
+            padding-top: 10em;
+            height: calc(100vh - 10em);
+        }
+
+        section.intro p {
+            font-size: 2em;
+            text-align: center;
+            margin-top: 3em;
+        }
+
+        section.anim {
+            background: #1989A6;
+            padding: 12em;
+            overflow: hidden;
+            position: relative;
+        }
+
+        section.anim h1 {
+            /*position: absolute;*/
+            font-size: 30px;
+            text-transform: uppercase;
+            margin: 0;
+            z-index: 100;
+            left: 15%;
+        }
+
+        section.anim p {
+            /*position: absolute;*/
+            font-size: 2em;
+            width: 40%;
+            z-index: 100;
+            top: 500px;
+        }
+
+        section.anim .box1 {
+            position: absolute;
+            top: 0;
+            left: 20%;
+            z-index: 0;
+            width: 800px;
+            height: 800px;
+            border: 30px solid #20A2C3;
+            overflow: hidden;
+            transform: rotateZ(65deg);
+        }
+
+        section.anim .box2 {
+            position: absolute;
+            top: 20%;
+            left: 10%;
+            z-index: 0;
+            width: 200px;
+            height: 200px;
+            border: 30px solid rgba(255, 255, 255, 0.5);
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="intro">
+        <p class="scroll-text">lax.js Scroll down</p>
+    </section>
+    <section class="anim" style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center">
+        <h1 data-lax-preset="rightToLeft-.1 fadeInOut">rightToLeft-.1 fadeInOut</h1>
+        <p data-lax-preset="leftToRight-.1 fadeIn">leftToRight-.1 fadeIn</p>
+        <p data-lax-preset="blurOut fadeOut spin">blurOut fadeOut spin</p>
+        <p data-lax-preset="slalom">slalom</p>
+        <p data-lax-preset="spinRev">spinRev</p>
+        <p data-lax-preset="spinIn">spinIn</p>
+        <p data-lax-preset="spinOut">spinOut</p>
+        <p data-lax-preset="blurInOut">blurInOut</p>
+        <p data-lax-preset="driftLeft">driftLeft</p>
+        <p data-lax-preset="driftRight">driftRight</p>
+        <p data-lax-preset="zoomInOut">zoomInOut</p>
+        <p data-lax-preset="zoomIn">zoomIn</p>
+        <p data-lax-preset="zoomOut">zoomOut</p>
+        <p data-lax-preset="swing">swing</p>
+        <p data-lax-preset="speedy">speedy</p>
+        <div class="box1" data-lax-preset="spin"></div>
+        <div class="box2" data-lax-scale="700 0, 500 200, 100 300, 0 0" data-lax-anchor="self"></div>
+    </section>
+
+    <section class="anim">
+        <p data-lax-opacity="100 100, 0 0" data-lax-anchor="self">scroll:100 opa:1, scroll:0 pa:0</p>
+        <p data-lax-translate="200 200,400 100, 100 0" data-lax-anchor="self">(200,200)>(400,100)>(100,0)</p>
+        <p data-lax-translate-x="400 0,200 400,100 0" data-lax-anchor="self" style="font-size: 24px;">(sc:400,x:0)>(sc:200,x:400)>(sc:100,x:0)</p>
+        <p data-lax-scale="400 3, 100 0.5" data-lax-anchor="self">(sc:400,3배)>(sc:100,1배)</p>
+        <p data-lax-rotate="600 720, 100 0" data-lax-anchor="self" style="font-size: 24px;">(sc:600,720도)>(sc:100,0도)=2바퀴</p>
+        <div class="box1" data-lax-preset="spin"></div>
+        <div class="box2" data-lax-scale="700 0, 500 1, 100 1, 0 0" data-lax-anchor="self"></div>
+    </section>
+
+    <section class="anim">
+        <p data-lax-bg-pos="elh 800,(document.body.scrollHeight) 0" style="background-image: url(/img/bg1.jpg)">swing</p>
+        <div class="box1" data-lax-preset="spin"></div>
+        <div class="box2" data-lax-scale="700 0, 500 1, 100 1, 0 0" data-lax-anchor="self"></div>
+    </section>
+    <script>
+        "use strict";
+        ! function() {
+            var lax = function() {
+                for (var lax = {
+                        elements: []
+                    }, lastY = 0, transforms = {
+                        "data-lax-opacity": function(t, a) {
+                            t.opacity = a
+                        },
+                        "data-lax-translate": function(t, a) {
+                            t.transform += " translate(".concat(a, "px, ").concat(a, "px)")
+                        },
+                        "data-lax-translate-x": function(t, a) {
+                            t.transform += " translateX(".concat(a, "px)")
+                        },
+                        "data-lax-translate-y": function(t, a) {
+                            t.transform += " translateY(".concat(a, "px)")
+                        },
+                        "data-lax-scale": function(t, a) {
+                            t.transform += " scale(".concat(a, ")")
+                        },
+                        "data-lax-scale-x": function(t, a) {
+                            t.transform += " scaleX(".concat(a, ")")
+                        },
+                        "data-lax-scale-y": function(t, a) {
+                            t.transform += " scaleY(".concat(a, ")")
+                        },
+                        "data-lax-skew": function(t, a) {
+                            t.transform += " skew(".concat(a, "deg, ").concat(a, "deg)")
+                        },
+                        "data-lax-skew-x": function(t, a) {
+                            t.transform += " skewX(".concat(a, "deg)")
+                        },
+                        "data-lax-skew-y": function(t, a) {
+                            t.transform += " skewY(".concat(a, "deg)")
+                        },
+                        "data-lax-rotate": function(t, a) {
+                            t.transform += " rotate(".concat(a, "deg)")
+                        },
+                        "data-lax-brightness": function(t, a) {
+                            t.filter += " brightness(".concat(a, "%)")
+                        },
+                        "data-lax-contrast": function(t, a) {
+                            t.filter += " contrast(".concat(a, "%)")
+                        },
+                        "data-lax-hue-rotate": function(t, a) {
+                            t.filter += " hue-rotate(".concat(a, "deg)")
+                        },
+                        "data-lax-blur": function(t, a) {
+                            t.filter += " blur(".concat(a, "px)")
+                        },
+                        "data-lax-invert": function(t, a) {
+                            t.filter += "  invert(".concat(a, "%)")
+                        },
+                        "data-lax-saturate": function(t, a) {
+                            t.filter += "  saturate(".concat(a, "%)")
+                        },
+                        "data-lax-grayscale": function(t, a) {
+                            t.filter += "  grayscale(".concat(a, "%)")
+                        },
+                        "data-lax-bg-pos": function(t, a) {
+                            t.backgroundPosition = "".concat(a, "px ").concat(a, "px")
+                        },
+                        "data-lax-bg-pos-x": function(t, a) {
+                            t.backgroundPositionX = "".concat(a, "px")
+                        },
+                        "data-lax-bg-pos-y": function(t, a) {
+                            t.backgroundPositionY = "".concat(a, "px")
+                        }
+                    }, _crazy = "", i = 0; i < 100; i++) _crazy += " " + window.innerHeight * (i / 100) + " " + 360 * Math.random() + ", ";
+
+                function intrp(t, a) {
+                    for (var e = 0; t[e][0] <= a && void 0 !== t[e + 1];) e += 1;
+                    var n = t[e][0],
+                        r = void 0 === t[e - 1] ? n : t[e - 1][0],
+                        o = t[e][1],
+                        l = void 0 === t[e - 1] ? o : t[e - 1][1];
+                    return Math.min(Math.max((a - r) / (n - r), 0), 1) * (o - l) + l
+                }
+                return lax.presets = {
+                    linger: function(t) {
+                        return {
+                            "data-lax-translate-y": "(vh*0.7) 0, 0 200, -500 0"
+                        }
+                    },
+                    lazy: function() {
+                        var t = 0 < arguments.length && void 0 !== arguments[0] ? arguments[0] : 100;
+                        return {
+                            "data-lax-translate-y": "(vh) 0, (-elh) ".concat(t)
+                        }
+                    },
+                    eager: function() {
+                        var t = 0 < arguments.length && void 0 !== arguments[0] ? arguments[0] : 100;
+                        return {
+                            "data-lax-translate-y": "(vh) 0, (-elh) -".concat(t)
+                        }
+                    },
+                    slalom: function() {
+                        var t = 0 < arguments.length && void 0 !== arguments[0] ? arguments[0] : 50;
+                        return {
+                            "data-lax-translate-x": "vh ".concat(t, ", (vh*0.8) ").concat(-t, ", (vh*0.6) ").concat(t, ", (vh*0.4) ").concat(-t, ", (vh*0.2) ").concat(t, ", (vh*0) ").concat(-t, ", (-elh) ").concat(t)
+                        }
+                    },
+                    crazy: function(t) {
+                        return {
+                            "data-lax-hue-rotate": _crazy
+                        }
+                    },
+                    spin: function() {
+                        var t = 0 < arguments.length && void 0 !== arguments[0] ? arguments[0] : 360;
+                        return {
+                            "data-lax-rotate": "(vh) 0, (-elh) ".concat(t)
+                        }
+                    },
+                    spinRev: function() {
+                        var t = 0 < arguments.length && void 0 !== arguments[0] ? arguments[0] : 360;
+                        return {
+                            "data-lax-rotate": "(vh) 0, (-elh) ".concat(-t)
+                        }
+                    },
+                    spinIn: function() {
+                        var t = 0 < arguments.length && void 0 !== arguments[0] ? arguments[0] : 360;
+                        return {
+                            "data-lax-rotate": "vh ".concat(t, ", (vh*0.5) 0")
+                        }
+                    },
+                    spinOut: function() {
+                        var t = 0 < arguments.length && void 0 !== arguments[0] ? arguments[0] : 360;
+                        return {
+                            "data-lax-rotate": "(vh*0.5) 0, -elh ".concat(t)
+                        }
+                    },
+                    blurInOut: function() {
+                        var t = 0 < arguments.length && void 0 !== arguments[0] ? arguments[0] : 40;
+                        return {
+                            "data-lax-blur": "(vh) ".concat(t, ", (vh*0.8) 0, (vh*0.2) 0, 0 ").concat(t)
+                        }
+                    },
+                    blurIn: function() {
+                        var t = 0 < arguments.length && void 0 !== arguments[0] ? arguments[0] : 40;
+                        return {
+                            "data-lax-blur": "(vh) ".concat(t, ", (vh*0.7) 0")
+                        }
+                    },
+                    blurOut: function() {
+                        var t = 0 < arguments.length && void 0 !== arguments[0] ? arguments[0] : 40;
+                        return {
+                            "data-lax-blur": "(vh*0.3) 0, 0 ".concat(t)
+                        }
+                    },
+                    fadeInOut: function() {
+                        return {
+                            "data-lax-opacity": "(vh) 0, (vh*0.8) 1, (vh*0.2) 1, 0 0"
+                        }
+                    },
+                    fadeIn: function() {
+                        return {
+                            "data-lax-opacity": "(vh) 0, (vh*0.7) 1"
+                        }
+                    },
+                    fadeOut: function() {
+                        return {
+                            "data-lax-opacity": "(vh*0.3) 1, 0 0"
+                        }
+                    },
+                    driftLeft: function() {
+                        var t = 0 < arguments.length && void 0 !== arguments[0] ? arguments[0] : 100;
+                        return {
+                            "data-lax-translate-x": "vh ".concat(t, ", -elh ").concat(-t)
+                        }
+                    },
+                    driftRight: function() {
+                        var t = 0 < arguments.length && void 0 !== arguments[0] ? arguments[0] : 100;
+                        return {
+                            "data-lax-translate-x": "vh ".concat(-t, ", -elh ").concat(t)
+                        }
+                    },
+                    leftToRight: function() {
+                        var t = 0 < arguments.length && void 0 !== arguments[0] ? arguments[0] : 1;
+                        return {
+                            "data-lax-translate-x": "vh 0, -elh (vw*".concat(t, ")")
+                        }
+                    },
+                    rightToLeft: function() {
+                        var t = 0 < arguments.length && void 0 !== arguments[0] ? arguments[0] : 1;
+                        return {
+                            "data-lax-translate-x": "vh 0, -elh (vw*".concat(-t, ")")
+                        }
+                    },
+                    zoomInOut: function() {
+                        var t = 0 < arguments.length && void 0 !== arguments[0] ? arguments[0] : .2;
+                        return {
+                            "data-lax-scale": "(vh) ".concat(t, ", (vh*0.8) 1, (vh*0.2) 1, -elh ").concat(t)
+                        }
+                    },
+                    zoomIn: function() {
+                        var t = 0 < arguments.length && void 0 !== arguments[0] ? arguments[0] : .2;
+                        return {
+                            "data-lax-scale": "(vh) ".concat(t, ", (vh*0.7) 1")
+                        }
+                    },
+                    zoomOut: function() {
+                        var t = 0 < arguments.length && void 0 !== arguments[0] ? arguments[0] : .2;
+                        return {
+                            "data-lax-scale": "(vh*0.3) 1, -elh ".concat(t)
+                        }
+                    },
+                    speedy: function() {
+                        var t = 0 < arguments.length && void 0 !== arguments[0] ? arguments[0] : 30;
+                        return {
+                            "data-lax-skew-x": "(vh) ".concat(t, ", -elh ").concat(-t)
+                        }
+                    },
+                    swing: function() {
+                        var t = 0 < arguments.length && void 0 !== arguments[0] ? arguments[0] : 30;
+                        return {
+                            "data-lax-skew-y": "(vh) ".concat(t, ", -elh ").concat(-t)
+                        }
+                    }
+                }, lax.addPreset = function(t, a) {
+                    lax.presets[t] = a
+                }, lax.setup = function(t) {
+                    lax.populateElements()
+                }, lax.removeElement = function(a) {
+                    var t = this.elements.findIndex(function(t) {
+                        return t.el = a
+                    }); - 1 < t && this.elements.splice(t, 1)
+                }, lax.addElement = function(el) {
+                    var o = {
+                            el: el,
+                            transforms: []
+                        },
+                        presetNames = el.attributes["data-lax-preset"] && el.attributes["data-lax-preset"].value;
+                    presetNames && (presetNames.split(" ").forEach(function(t) {
+                        var a = t.split("-"),
+                            e = lax.presets[a[0]];
+                        if (e) {
+                            var n = e(a[1]);
+                            for (var r in n) el.setAttribute(r, n[r])
+                        } else console.error("preset ".concat(a[0], " is not defined"))
+                    }), el.setAttribute("data-lax-anchor", "self"), el.attributes.removeNamedItem("data-lax-preset"));
+                    var useGpu = !(el.attributes["data-lax-use-gpu"] && "false" === el.attributes["data-lax-use-gpu"].value);
+                    if (useGpu && (el.style["-webkit-backface-visibility"] = "hidden"), el.attributes["data-lax-use-gpu"] && el.attributes.removeNamedItem("data-lax-use-gpu"), o.optimise = !1, el.attributes["data-lax-optimize"] && "true" === el.attributes["data-lax-optimize"].value) {
+                        o.optimise = !0;
+                        var bounds = el.getBoundingClientRect();
+                        el.setAttribute("data-lax-opacity", "".concat(-bounds.height - 1, " 0, ").concat(-bounds.height, " 1, ").concat(window.innerHeight, " 1, ").concat(window.innerHeight + 1, " 0")), el.attributes.removeNamedItem("data-lax-optimize")
+                    }
+                    for (var i = 0; i < el.attributes.length; i++) {
+                        var a = el.attributes[i],
+                            bits = a.name.split("-");
+                        if ("lax" === bits[1])
+                            if ("data-lax-anchor" === a.name) {
+                                o["data-lax-anchor"] = "self" === a.value ? el : document.querySelector(a.value);
+                                var rect = o["data-lax-anchor"].getBoundingClientRect();
+                                o["data-lax-anchor-top"] = Math.floor(rect.top) + window.scrollY
+                            } else o.transforms[a.name] = a.value.replace(new RegExp("vw", "g"), window.innerWidth).replace(new RegExp("vh", "g"), window.innerHeight).replace(new RegExp("elh", "g"), el.clientHeight).replace(new RegExp("elw", "g"), el.clientWidth).replace(new RegExp("-vw", "g"), -window.innerWidth).replace(new RegExp("-vh", "g"), -window.innerHeight).replace(new RegExp("-elh", "g"), -el.clientHeight).replace(new RegExp("-elw", "g"), -el.clientWidth).replace(/\s+/g, " ").split(",").map(function(x) {
+                                return x.trim().split(" ").map(function(y) {
+                                    return "(" === y[0] ? eval(y) : parseFloat(y)
+                                })
+                            }).sort(function(t, a) {
+                                return t[0] - a[0]
+                            })
+                    }
+                    lax.elements.push(o), lax.updateElement(o)
+                }, lax.populateElements = function() {
+                    lax.elements = [];
+                    var t = Object.keys(transforms).map(function(t) {
+                        return "[".concat(t, "]")
+                    }).join(",");
+                    t += ",[data-lax-preset]", document.querySelectorAll(t).forEach(this.addElement)
+                }, lax.updateElement = function(t) {
+                    var a = lastY,
+                        e = t["data-lax-anchor-top"] ? t["data-lax-anchor-top"] - a : a,
+                        n = {
+                            transform: "",
+                            filter: ""
+                        };
+                    for (var r in t.transforms) {
+                        var o = t.transforms[r],
+                            l = transforms[r],
+                            c = intrp(o, e);
+                        if (!l) return void console.error("lax: " + r + " is not supported");
+                        l(n, c)
+                    }
+                    for (var i in n) 0 === n.opacity ? t.el.style.opacity = 0 : t.el.style[i] = n[i]
+                }, lax.update = function(t) {
+                    lastY = t, lax.elements.forEach(lax.updateElement)
+                }, lax
+            }();
+            "undefined" != typeof module && void 0 !== module.exports ? module.exports = lax : window.lax = lax
+        }();
+
+        window.onload = function() {
+            lax.setup() // init
+
+            document.addEventListener('scroll', function(e) {
+                lax.update(window.scrollY) // update every scroll
+            }, false)
+        }
+    </script>
+</body>
+
+</html>

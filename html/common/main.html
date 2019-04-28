@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+    <head>
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Bree Serif", sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <header style="width: 100%; height: 15px; background-color: #d3d3d3;"></header>
+    <div include-html="left.html">
+            <script>
+                function toggleSidebar(obj) {
+                    obj.classList.toggle('active');
+                    document.querySelector('#sidebar').classList.toggle('active');
+                }
+                function clickMenu(url){
+                    document.querySelector('#body').setAttribute('include-html',url);
+                    includeHTML();
+                }
+            </script>
+        </div>
+    <div style="display: flex; flex-wrap: wrap; width: 100%; background-color: #d3d3d3;">
+        
+        <div id="body">
+        </div>
+        
+    </div>
+    <footer style="width: 100%; height: 15px; background-color: #d3d3d3;"></footer>
+</body>
+<script>
+    function includeHTML() {
+        var z, i, elmnt, file, xhttp;
+        z = document.querySelectorAll("*[include-html]");
+        for (i = 0; i < z.length; i++) {
+            elmnt = z[i];
+            file = elmnt.getAttribute("include-html");
+            if (file) {
+                xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        elmnt.innerHTML = this.responseText;
+                        elmnt.removeAttribute("include-html");
+                        includeHTML();
+                    }
+                }
+                xhttp.open("GET", file, true);
+                xhttp.send();
+                return;
+            }
+        }
+    }
+    includeHTML();
+</script>
+</html>

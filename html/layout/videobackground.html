@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>parallaxEffect</title>
+    <style>
+
+            .login-form {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 300px;
+                padding: 60px 40px;
+                background: rgba(255, 255, 255, .3);
+                box-shadow: 0 15px 20px rgba(0, 0, 0, .2);
+            }
+
+            .login-form h2 {
+                margin: 0 0 40px;
+                padding: 0;
+                text-align: center;
+            }
+
+            .login-form .form-input {
+                position: relative;
+                margin: 20px 0;
+            }
+
+            .login-form .form-input input {
+                outline: none;
+                height: 40px;
+                padding: 10px;
+                box-sizing: border-box;
+                width: 100%;
+                border: 1px solid rgba(0, 0, 0, .5);
+                background: transparent;
+                font-size: 18px;
+            }
+
+            .login-form .form-input input[type="submit"] {
+                background: #e91e63;
+                color: #fff;
+                border: none;
+                cursor: pointer;
+                text-transform: uppercase;
+            }
+
+            .login-form .form-input input[type="submit"]:hover {
+                background: #0090ff;
+            }
+
+            .login-form .forget {
+                display: block;
+                margin-top: 30px;
+                color: #000;
+                font-weight: bold;
+            }
+        </style>
+</head>
+
+<body><!-- data-vide-bg="/img/Person"-->
+        <div style="position: absolute; z-index: -1; top: 0px; left: 0px; bottom: 0px; right: 0px; overflow: hidden;">
+            <video autoplay loop muted style="margin: auto; position: absolute; z-index: -1; top: 50%; left: 50%; transform: translate(-50%, -50%); height: 100%; ">
+                <source src="/img/Person.mp4" type="video/mp4">
+            </video>
+        </div>
+       
+        <div class="login-form">
+            <h2>Sign In</h2>
+            <div class="form-input">
+                <input type="text" name="" placeholder="Email">
+            </div>
+            <div class="form-input">
+                <input type="password" name="" placeholder="Password">
+            </div>
+            <div class="form-input">
+                <input type="submit" name="" value="Login">
+            </div>
+            <a href="#" class="forget">Forget Password</a>
+        </div>
+        
+        <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+        <script src="js/jquery.vide.js"></script>
+</body>
+
+</html>

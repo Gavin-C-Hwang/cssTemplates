@@ -1,0 +1,79 @@
+    <style>
+        #sidebar {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 0px;
+            height: 100vh;
+            background: #1a1a1a;
+            text-align: center;
+            transform-origin: left;
+            transform: perspective(1200px) rotateY(90deg);
+            transition: all 400ms ease;
+        }
+        #sidebar ul li {
+            color: #ccc;
+            font-size: 20px;
+            width: 100%;
+            height: 50px;
+            border-bottom: 1px solid #222222;
+            line-height: 50px;
+        }
+        #sidebar ul li:hover {
+            cursor: pointer;
+            color: #fff;
+        }
+        #sidebar.active{
+            transform: perspective(1200px) rotate(0deg);
+            width: 200px;
+        }
+        #toggle-btn {
+            position: absolute;
+            left: 30px;
+            top: 20px;
+            transition: left 200ms linear 0ms, transform 300ms ease 100ms;
+        }
+        #toggle-btn.active{
+            left: 230px;
+            transform: rotate(360deg);
+        }
+        #toggle-btn span{
+            position: relative;
+            top: 0px;
+            display: block;
+            background: #1a1a1a;
+            width: 30px;
+            height: 5px;
+            margin: 5px 0px;
+            cursor: pointer;
+            transition: transform 300ms ease 200ms;
+        }
+        #toggle-btn.active span:nth-child(1){
+            top: 10px;
+            transform: rotate(45deg);
+        }
+        #toggle-btn.active span:nth-child(2){
+            opacity: 0;
+        }#toggle-btn.active span:nth-child(3){
+            top: -10px;
+            transform: rotate(-45deg);
+        }
+    </style>
+
+    <div id="sidebar">
+        <ul>
+            <li onclick="clickMenu('home.html')">Home</li>
+            <li onclick="clickMenu('layout.html')">Layout</li>
+            <li onclick="clickMenu('menu.html')">Menu</li>
+            <li onclick="clickMenu('card.html')">Card</li>
+            <li onclick="clickMenu('button.html')">Button</li>
+            <li onclick="clickMenu('text.html')">Text</li>
+            <li onclick="clickMenu('form.html')">Form</li>
+            <li onclick="clickMenu('gallery.html')">Gallery</li>
+        </ul>
+    </div>
+    <div id="toggle-btn" onclick="toggleSidebar(this)">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
