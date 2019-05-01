@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+    <head>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f2d45a;
+        }
+        
+        #img {
+            width: 250px;
+            position: relative;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: anim 3s infinite;
+        }
+
+        @keyframes anim {
+            0% {
+                top: 350px;
+            }
+
+            50% {
+                top: 375px;
+            }
+
+            100% {
+                top: 350px;
+            }
+        }
+
+        #shadow1 {
+            height: 50px;
+            width: 200px;
+            border-radius: 50%;
+            position: relative;
+            top: 200px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            margin-top: 70px;
+            -webkit-filter: blur(2px);
+            z-index: 99;
+            animation: anim2 3s infinite;
+        }
+
+        @keyframes anim2 {
+            0% {
+                height: 8px;
+                width: 180px;
+                background-color: rgba(0, 0, 0, .8);
+                -webkit-filter: blur(10px);
+            }
+
+            50% {
+                height: 30px;
+                width: 200px;
+                background-color: rgba(0, 0, 0, 1);
+                -webkit-filter: blur(4px);
+            }
+
+            100% {
+                height: 8px;
+                width: 180px;
+                background-color: rgba(0, 0, 0, .8);
+                -webkit-filter: blur(10px);
+            }
+        }
+        
+        #shadow2{
+                height: 0px;
+                width: 0px;
+                border-radius: 50%;
+                position: relative;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%,-50%);
+                -webkit-filter:blur(10px);
+                z-index: 999;
+                animation: anim3 3s infinite;
+                
+            }
+            @keyframes anim3{
+                0%{
+                    height: 4px;
+                    width: 130px;
+                    background-color: rgba(0,0,0,.1);
+                }
+                50%{
+                    height: 3px;
+                    width: 120px;
+                    background-color: rgba(0,0,0,.7);
+                }
+                100%{
+                    height: 4px;
+                    width: 130px;
+                    background-color: rgba(0,0,0,.1);
+                }
+            }
+
+        #text {
+            font-family: Gloss And Bloom;
+            font-size: 120px;
+            color: #292929;
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <img src="/img/coffee.png" alt="" id="img">
+        <div id="shadow1"></div>
+        <div id="shadow2"></div>
+    </div>
+    <div id="text">Coffee</div>
+</body>
+</html>
