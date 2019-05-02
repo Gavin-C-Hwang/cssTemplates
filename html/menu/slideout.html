@@ -1,0 +1,193 @@
+<!doctype html>
+<html>
+    <head>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+            background-image: url(/img/bg7.jpg);
+            background-position: center;
+        }
+
+        #MenuIcon {
+            height: 25px;
+            width: 50px;
+            position: fixed;
+            top: 50;
+            right: 50;
+        }
+
+        #MenuIcon:hover {
+            cursor: pointer;
+        }
+
+        #MenuLine {
+            height: 4px;
+            width: 50px;
+            background-color: #181818;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: all .3s;
+        }
+
+        #MenuIcon:hover #MenuLine {
+            width: 40px;
+        }
+
+        #MenuLine::before {
+            content: '';
+            height: 4px;
+            width: 40px;
+            background-color: #181818;
+            position: absolute;
+            margin-top: 10px;
+            transition: all .3s;
+        }
+
+        #MenuIcon:hover #MenuLine::before {
+            width: 50px;
+        }
+
+        #MenuLine::after {
+            content: '';
+            height: 4px;
+            width: 40px;
+            background-color: #181818;
+            position: absolute;
+            margin-top: -10px;
+            transition: all .3s;
+        }
+
+        #MenuIcon:hover #MenuLine::after {
+            width: 50px;
+        }
+
+        #MainMenu {
+            height: 100vh;
+            width: 300px;
+            background-color: #181818;
+            -webkit-clip-path: polygon(0 0, 100% 0, 0% 100%, 0% 100%);
+            position: fixed;
+            top: 0;
+            left: -300px;
+            transition: all .5s ease-in-out;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0px;
+            margin: 0px;
+            font-family: arial;
+            color: white;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        ul li {
+            margin: 20px;
+        }
+
+        ul li:hover {
+            cursor: pointer;
+        }
+
+        .line {
+            height: 2px;
+            width: 150px;
+            background-color: white;
+            margin-top: 10px;
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%);
+            transition: all .3s;
+        }
+
+        ul li:hover .line {
+            width: 180px;
+        }
+
+        #logo {
+            position: absolute;
+            top: 100;
+            left: 50%;
+            transform: translate(-50%);
+        }
+
+        #close {
+            position: absolute;
+            bottom: 150px;
+            left: 50%;
+            transform: translate(-50%);
+        }
+
+        #close:hover {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="MenuIcon">
+        <div id="MenuLine"></div>
+    </div>
+
+    <div id="MainMenu">
+        <div id="logo">
+            <img src="/img/img1.jpg" height="75px" width="75px" />
+        </div>
+        <ul>
+            <li>HOME<div class="line"></div>
+            </li>
+            <li>ABOUT<div class="line"></div>
+            </li>
+            <li>SERVICES<div class="line"></div>
+            </li>
+            <li>WORK<div class="line"></div>
+            </li>
+            <li>CONTACT<div class="line"></div>
+            </li>
+        </ul>
+        <div id="close">
+            <img src="/img/close.png" height="30px" width="30px" />
+        </div>
+    </div>
+    <script src="http://code.jquery.com/jquery-3.3.1.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#MenuIcon").click(function() {
+                $("#MainMenu").css("left", "0px");
+
+                function showMenu() {
+                    $("#MainMenu").css("-webkit-clip-path", "polygon(0 0,100% 0,100% 100%,0% 100%)");
+                    $("#MenuIcon").animate({
+                        right: '-100'
+                    }, 300);
+                }
+                setTimeout(showMenu, 100);
+            });
+
+            $("#close").click(function() {
+                $("#MainMenu").css("-webkit-clip-path", "polygon(0 0,0% 0,100% 100%,0% 100%)");
+
+                function hideMenu() {
+                    $("#MainMenu").css("left", "-300px");
+                    $("#MenuIcon").animate({
+                        right: '50'
+                    }, 300);
+                }
+                setTimeout(hideMenu, 300);
+
+                function originalLayout() {
+                    $("#MainMenu").css("-webkit-clip-path", "polygon(0 0,100% 0,0% 100%,0% 100%)");
+                }
+                setTimeout(originalLayout, 600);
+            });
+        });
+    </script>
+</body>
+</html>
