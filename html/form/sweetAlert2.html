@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="/css/sweetalert2.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div><a href="https://sweetalert2.github.io/">https://sweetalert2.github.io/</a> </div>
+    <button onclick="error()">Error</button>
+    <button onclick="success()">Success</button>
+    <button onclick="queue()">Queue</button>
+
+    <script src="/js/sweetalert2.all.min.js"></script>
+    <!-- Optional:include a polyfill for ES6 Promises for IE11 and Android browser -->
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+    <script>
+        function error() {
+            Swal.fire({
+                title: 'Error!',
+                text: 'Do you want to continue',
+                type: 'error',
+                confirmButtonText: 'Cool'
+            })
+        }
+
+        function success() {
+            Swal.fire({
+                position: 'top-end',
+                type: 'success',
+                title: 'Your work has been saved',
+                showConfirmButton: false,
+                timer: 1500
+            })
+        }
+
+        function queue() {
+            Swal.mixin({
+                input: 'text',
+                confirmButtonText: 'Next &rarr;',
+                showCancelButton: true,
+                progressSteps: ['1', '2', '3']
+            }).queue([{
+                    title: 'Question 1',
+                    text: 'Chaining swal2 modals is easy'
+                },
+                'Question 2',
+                'Question 3'
+            ]).then((result) => {
+                if (result.value) {
+                    Swal.fire({
+                        title: 'All done!',
+                        html: 'Your answers: <pre><code>' +
+                            JSON.stringify(result.value) +
+                            '</code></pre>',
+                        confirmButtonText: 'Lovely!'
+                    })
+                }
+            })
+        }
+
+    </script>
+</body>
+
+</html>

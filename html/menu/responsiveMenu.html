@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background: url('/img/bg9.jpg');
+            background-attachment: fixed;
+        }
+        header{
+            position: relative;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 10px;
+            background: #fff;
+            box-sizing: border-box;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0,0,0,.2);
+        }
+        .logo{
+            color: #069370;
+            height: 60px;
+            font-size: 36px;
+            line-height: 60px;
+            padding: 0 20px;
+            text-align: center;
+            box-sizing: border-box;
+            float: left;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        nav{
+            float: right;
+            
+        }
+        .clearfix{
+            clear:both;
+        }
+        nav ul{
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li{
+            list-style: none;
+            
+        }
+        nav ul li a{
+            display: block;
+            margin: 10px 0;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #262626;
+        }
+        nav ul li a.active,
+        nav ul li a:hover{
+            background: #069370;
+            color: #fff;
+            transition: 0.5s;
+        }
+        @media (max-width:1200px){
+            header{
+                margin: 20px;
+            }
+            
+        }
+        
+        @media (max-width:768px){
+            .menu-toggle{
+                display: block;
+                width: 40px;
+                height: 40px;
+                margin: 10px;
+                float: right;
+                cursor: pointer;
+                text-align: center;
+                font-size: 30px;
+                color: #069370;
+                    
+            }
+            .menu-toggle:before{
+                content: '\f0c9';
+                font-family: fontAwesome;
+                line-height: 40px;
+            }
+            .menu-toggle.active:before{
+                content: '\f00d';
+                font-family: fontAwesome;
+                line-height: 40px;
+            }
+            nav{
+                display: none;
+            }
+            nav.active{
+                display: block;
+                width: 100%;
+            }
+            nav.active ul{
+                display: block;
+            }
+            nav.active ul li{
+                margin: 0;
+            }
+            
+        }
+        
+        
+        
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="#" class="logo">Logo</a>
+        <div class="menu-toggle">
+
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Team</a></li>
+                <li><a href="#">Portfolio</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="clearfix"></div>
+    </header>
+    
+    
+    <script src="/js/vanilaJs.js"></script>
+    <script>
+        $('.menu-toggle').onclick = function(){
+            $('.menu-toggle').toggleClass('active');
+            $('nav').toggleClass('active');
+        }
+    </script>
+</body>
+</html>

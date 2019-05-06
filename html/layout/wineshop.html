@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>THE WINE SHOP</title>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css?family=Smythe" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
+  <script src="https://unpkg.com/ionicons@4.5.5/dist/ionicons.js"></script>
+  <script src="https://code.jquery.com/jquery-3.4.0.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js"></script>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100vh;
+      background: url(/img/hero.jpg) no-repeat 50% 50%;
+      background-size: cover;
+      overflow: hidden;
+}
+
+.outline {
+      z-index: 1;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 97%;
+      height: 94vh;
+      background: none;
+      border: 1px solid rgba(200, 146, 83, 0.4);
+}
+
+.logo {
+      position: fixed;
+      margin: 2em 2.4em;
+      transform: translate(-50%, -50%);
+      font-family: "Great Vibes";
+      color: #c89253;
+      font-size: 36px;
+      z-index: 1;
+}
+
+.menu {
+      position: fixed;
+      right: 0;
+      margin: 3em 2em;
+      transform: translate(-50%, -50%);
+      color: #c89253;
+      font-size: 24px;
+      z-index: 1;
+}
+
+.title {
+      position: absolute;
+      top: 38%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: "Smythe";
+      color: #c89253;
+      font-size: 68px;
+      z-index: 1;
+}
+
+.tagline {
+      position: absolute;
+      top: 46%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: "Great Vibes";
+      color: #fff;
+      font-size: 24px;
+      z-index: 1;
+}
+
+.morewine {
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+}
+
+button {
+      background: none;
+      padding: 20px 48px;
+      color: #c89253;
+      border: 1px solid #c89253;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+}
+
+button:focus {
+      outline: none;
+      border: none;
+}
+
+button:hover {
+      background: #c89253;
+      color: #110b07;
+}
+
+.wines {
+      position: absolute;
+      width: 100%;
+      height: 100vh;
+      background: #130c08;
+      z-index: 1;
+      opacity: 0;
+}
+
+#wrap {
+      position: absolute;
+      left: 0%;
+      top: -8%;
+      width: 150%;
+      height: 100%;
+      display: flex;
+      margin: 0 25%;
+}
+
+.block {
+      position: relative;
+      width: 25%;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      z-index: 2;
+      transform: scale(0.97);
+}
+
+.product {
+      position: relative;
+      display: block;
+      max-width: 80%;
+}
+
+.product img {
+      position: relative;
+      display: block;
+      width: 80%;
+      height: auto;
+      z-index: 2;
+}
+
+.txt {
+      position: absolute;
+      top: 104%;
+      left: 2%;
+      width: 80%;
+      opacity: 0;
+      text-align: center;
+      font-family: Helvetica;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      color: #fff;
+      z-index: 1;
+      transform: scaleY(1) translateY(-30px);
+      transition: transform .2s, opacity .5s;
+}
+
+.txt p {
+      margin-bottom: 20px;
+}
+
+.wines button {
+      margin-top: 10px;
+      padding: 16px 28px;
+}
+
+h1 {
+      font-family: "Smythe";
+      color: #ecaa5d;
+      font-size: 1.6rem;
+      font-weight: 700;
+      text-transform: uppercase;
+}
+
+.block:hover .txt {
+      opacity: 1;
+      transform: scaleY(1) translateY(0);
+}
+
+.close-btn {
+      position: fixed;
+      top: 0;
+      right: 0;
+      padding: 2.5em;
+      letter-spacing: 2px;
+      font-size: 0.8em;
+      font-family: Helvetica;
+      color: #765936;
+      transition: 0.3s;
+      z-index: 3;
+      cursor: pointer;
+}
+
+.close-btn:hover {
+      color: #e7ad68;
+      transition: 0.3s;
+}
+
+@media(max-width: 768px) {
+      .title {
+            font-size: 42px;
+      }
+
+      .tagline {
+            font-size: 15px;
+      }
+
+      .outline {
+            width: 92%;
+      }
+}
+  
+    
+  </style>
+</head>
+<body>
+      <div class="container">
+            <div class="outline"></div>
+            <div class="logo">Smythe</div>
+            <div class="menu">
+                  <ion-icon name="menu"></ion-icon>
+            </div>
+            <div class="title">
+                  THE WINE SHOP
+            </div>
+            <div class="tagline">
+                  As much character as the people who make them.
+            </div>
+            <div class="morewine">
+                  <button>Open Up</button>
+            </div>
+      </div>
+      <div class="wines">
+            <div id="wrap">
+                  <a href="#" class="block">
+                        <div class="product one">
+                              <img src="/img/wine01.png" alt="">
+                              <div class="txt">
+                                    <h1>Smythe Wheat</h1>
+                                    <p>Price : $40</p>
+                                    <div class="add">
+                                          <button>BUY NOW</button>
+                                    </div>
+                              </div>
+                        </div>
+                  </a>
+                  <a href="#" class="block">
+                        <div class="product two">
+                              <img src="/img/wine02.png" alt="">
+                              <div class="txt">
+                                    <h1>Smythe Mixology</h1>
+                                    <p>Price : $40</p>
+                                    <div class="add">
+                                          <button>BUY NOW</button>
+                                    </div>
+                              </div>
+                        </div>
+                  </a>
+                  <a href="#" class="block">
+                        <div class="product three">
+                              <img src="/img/wine03.png" alt="">
+                              <div class="txt">
+                                    <h1>Smythe Cherry</h1>
+                                    <p>Price : $40</p>
+                                    <div class="add">
+                                          <button>BUY NOW</button>
+                                    </div>
+                              </div>
+                        </div>
+                  </a>
+                  <a href="#" class="block">
+                        <div class="product four">
+                              <img src="/img/wine04.png" alt="">
+                              <div class="txt">
+                                    <h1>Pepper</h1>
+                                    <p>Price : $40</p>
+                                    <div class="add">
+                                          <button>BUY NOW</button>
+                                    </div>
+                              </div>
+                        </div>
+                  </a>
+            </div>
+            <a class="close-btn">close</a>
+      </div>
+
+      <script type="text/javascript">
+
+      $(document).ready(function() {
+            var docWidth = $('body').width(),
+            $wrap = $('#wrap'),
+            $images = $('#wrap .block'),
+            slidesWidth = $wrap.width();
+
+            $(window).on('resize', function() {
+                  docWidth = $('body').width();
+                  slidesWidth = $wrap.width();
+            })
+
+            $(document).mousemove(function(e) {
+                  var mouseX = e.pageX,
+                  offset = mouseX / docWidth * slidesWidth - mouseX / 2;
+
+                  $images.css({
+                        '-wrbkit-transform' : 'translate3d(' + -offset + 'px,0,0)',
+                        'transform' : 'translate3d(' + -offset + 'px,0,0)'
+                  });
+            });
+      })
+
+      var t1 = new TimelineMax({paused: true});
+
+      TweenMax.from(".logo", 0.5, {
+            opacity: 0,
+            y: 10,
+            delay: 1
+      });
+
+      TweenMax.from(".menu", 0.5, {
+            opacity: 0,
+            y: 10,
+            delay: 1.2
+      });
+
+      TweenMax.from(".title", 3, {
+            opacity: 0,
+            delay: 1.4
+      });
+
+      TweenMax.from(".tagline", 3, {
+            opacity: 0,
+            delay: 1.6
+      });
+
+      TweenMax.from(".morewine", 0.5, {
+            opacity: 0,
+            y: 4,
+            delay: 1.8
+      });
+
+      t1.to(".wines", 1, {
+            autoAlpha: 1
+      });
+
+      t1.from(".one", 0.5, {
+            opacity: 0,
+            y: 20,
+            delay: 0.1
+      },"-=1");
+
+      t1.from(".two", 0.5, {
+            opacity: 0,
+            y: 20,
+            delay: 0.3
+      },"-=1");
+
+      t1.from(".three", 0.5, {
+            opacity: 0,
+            y: 20,
+            delay: 0.5
+      },"-=1");
+
+      t1.from(".four", 0.5, {
+            opacity: 0,
+            y: 20,
+            delay: 0.7
+      },"-=1");
+
+      t1.reverse();
+      $(document).on("click", ".morewine", function() {
+            t1.reversed(!t1.reversed());
+      });
+
+      $(document).on("click", "a", function() {
+            t1.reversed(!t1.reversed());
+      });
+
+      $(document).on("click", ".close-btn a", function() {
+            t1.reversed(!t1.reversed());
+      });
+
+      </script>
+</body>
+</html>

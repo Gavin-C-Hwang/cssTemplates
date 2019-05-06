@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    <div style="position: absolute; bottom: 0px;">
+        <div id="test1"></div>
+        <input type="text" width="200" onkeydown="press(event)" />
+    </div>
+
+    <button onclick="clk()">btasdadasdadasdadn</button>
+    <script src="/js/TweenMax.min.js"></script>
+    <script src="/js/CustomEase.min.js"></script>
+    <script>
+        function clk() {
+            CustomEase.create("hop", "M0,0.005 C0,0.005 0.056,0.445 0.175,0.445 0.294,0.445 0.332,0 0.332,0 0.332,0 0.414,1 0.671,1 0.991,1 1,0 1,0");
+
+            CustomEase.create("custom", "M0,0 C0,0.192 0.117,1 0.244,1 0.402,1 0.5,-0.038 0.5,0 0.512,0.056 0.583,0.23 0.658,0.23 0.716,0.23 0.8,-0.038 0.8,0 0.819,0.057 0.84,0.078 0.866,0.078 0.89,0.078 0.908,0.044 0.928,0 0.948,0.028 0.948,0.028 0.96,0.028 0.978,0.028 1,0 1,0")
+
+            TweenLite.to("#test1", 2.5, {
+                ease: "custom",
+                y: -500
+            });
+        }
+        let idx = 0;
+
+        function press(ev) {
+            let test1 = document.querySelector('#test1');
+
+            let test2 = document.createElement('div');
+            test2.innerHTML = ev.code;
+            test1.appendChild(test2);
+
+
+            CustomEase.create("custom", "M0,0 C0,0.192 0.117,1 0.244,1 0.402,1 0.5,-0.038 0.5,0 0.512,0.056 0.583,0.23 0.658,0.23 0.716,0.23 0.8,-0.038 0.8,0 0.819,0.057 0.84,0.078 0.866,0.078 0.89,0.078 0.908,0.044 0.928,0 0.948,0.028 0.948,0.028 0.96,0.028 0.978,0.028 1,0 1,0")
+
+            let mine = TweenLite.to(test2, 2.5, {
+                ease: "custom",
+                y: -500,
+                onComplete: myFunction,
+                onCompleteParams: ["param1", "param2"]
+            });
+
+            mine.eventCallback("onComplete", myFunction, [test2, "param2"]);
+        }
+
+        function myFunction(p1, p2) {
+            p1.style.display = 'none';
+        }
+
+    </script>
+</body>
+
+</html>
