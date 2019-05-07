@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        html{
+            height: 100%;
+        }
+        body{
+            font-size: 16px;
+            color: #fff;
+            background-image:url(/img/bg4.jpg);
+            -webkit-background-size:cover;
+            background-size:cover;
+            background-position: 50% 0;
+            height: 100%;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        body:before{
+            content: '';
+            display: inline-block;
+            vertical-align: middle;
+            height: 100%;
+        }
+        section{
+            background-image:url(/img/bg4.jpg);
+            -webkit-background-size:cover;
+            background-size:cover;
+            background-attachment: fixed;
+            background-position: 50% 0;
+            display: inline-block;
+            vertical-align: middle;
+            padding: 150px;
+            max-width: 500px;
+            text-shadow: 0 1px 2px rgba(0,0,0,.5);
+            box-shadow: 0 15px 15px rgba(0,0,0,.5);
+        }
+    
+    </style>
+</head>
+<body>
+    <section>
+        <header>
+            <h1>JQuery Water Ripple Effect </h1>
+            <h2>Nice Plugin</h2>
+        </header>
+        
+    </section>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="/js/jquery.ripples-min.js"></script>
+    <script>
+        $('section').ripples({
+			resolution: 512,
+			dropRadius: 20, //px
+			perturbance: 0.04,
+		});
+    </script>
+</body>
+</html>
