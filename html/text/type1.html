@@ -32,6 +32,8 @@
             let test1 = document.querySelector('#test1');
 
             let test2 = document.createElement('div');
+            test2.style.marginLeft = getRandomIntInclusive(500,600)+"px";
+            test2.style.position = 'absolute';
             test2.innerHTML = ev.code;
             test1.appendChild(test2);
 
@@ -40,7 +42,8 @@
 
             let mine = TweenLite.to(test2, 2.5, {
                 ease: "custom",
-                y: -500,
+                y: getRandomIntInclusive(-700,-100),
+                x:getRandomIntInclusive(-500,500),
                 onComplete: myFunction,
                 onCompleteParams: ["param1", "param2"]
             });
@@ -52,6 +55,9 @@
             p1.style.display = 'none';
         }
 
+        function getRandomIntInclusive(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
     </script>
 </body>
 
